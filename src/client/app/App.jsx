@@ -27,7 +27,7 @@ class MainContainer extends React.Component {
     }
 
     render() {
-        console.log(this.state);
+        console.log("state", this.state);
         return (
             <main id="result" className='main'>
                 main:{this.props.data.word}

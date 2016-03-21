@@ -17,7 +17,6 @@ app.use('/word.json', (req, res) => {
 });
 
 app.use('/index.html', (req, res) => {
-    let app = new App();
     fetch('http://localhost:3000/word.json')
         .then(function (response) {
             return response.json()
