@@ -1,4 +1,6 @@
 {
-"presets" : ["es2015", "react"],
-"plugins": ["transform-function-bind"]
+"presets" : ["es2015-loose",  "react"],
+"plugins": ["transform-function-bind", ["transform-es2015-classes", {
+                                             "loose": true
+                                           }]]
 }

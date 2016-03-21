@@ -11,13 +11,19 @@ var config = {
     filename: 'bundle.js'
   },
   plugins:[
+    new webpack.ProvidePlugin({
+      //ie10 see https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602
+      'Promise': 'exports?global.Promise!es6-promise',
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
+    new webpack.NoErrorsPlugin()
   ],
   module : {
     loaders : [
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel'
+        loader : 'babel',
       }
     ]
   }

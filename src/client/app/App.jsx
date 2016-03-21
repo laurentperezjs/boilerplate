@@ -7,11 +7,13 @@ class MainContainer extends React.Component {
         this.state = {}
     }
 
+    static getData() {
+        return "foo";
+    }
     componentWillUnmount() {
     }
 
     componentDidMount() {
-        console.log("main did mount")
         fetch('http://localhost:3000/word.json')
             .then(function (response) {
                 return response.json()
@@ -20,10 +22,6 @@ class MainContainer extends React.Component {
         }.bind(this)).catch(function (ex) {
             console.error('fetch parsing failed', ex)
         })
-    }
-
-    getData() {
-        return "hello"
     }
 
     render() {
