@@ -23,7 +23,8 @@ var config = {
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel',
+        //ie10
+        loaders : ['imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham','babel']
       }
     ]
   }

@@ -20,6 +20,11 @@ var config = {
       compress:{
         warnings: true
       }
+    }),
+    new webpack.ProvidePlugin({
+      //ie10 see https://gist.github.com/Couto/b29676dd1ab8714a818f#gistcomment-1584602
+      'Promise': 'exports?global.Promise!es6-promise',
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
   ],
   module : {
@@ -27,7 +32,8 @@ var config = {
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel'
+        //ie10
+        loaders : ['imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham','babel']
       }
     ]
   }

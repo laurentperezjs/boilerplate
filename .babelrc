@@ -1,6 +1,9 @@
 {
 "presets" : ["es2015-loose",  "react"],
-"plugins": ["transform-function-bind", ["transform-es2015-classes", {
+"plugins": ["transform-function-bind", "babel-plugin-transform-es3-member-expression-literals",
+ "babel-plugin-transform-es3-property-literals",
+
+["transform-es2015-classes", {
                                              "loose": true
                                            }]]
 }
