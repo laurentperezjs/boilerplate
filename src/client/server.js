@@ -1,4 +1,6 @@
 import App from './app/App.jsx';
+import MainContainer from './app/MainContainer.jsx'
+
 const express = require('express');
 const React = require('React');
 const ReactDOMServer = require('react-dom/server');
@@ -17,6 +19,8 @@ app.use('/word.json', (req, res) => {
 });
 
 app.use('/index.html', (req, res) => {
+    const mc = new MainContainer();
+    console.log(mc.getData());
     // fetch here is node-fetch
     fetch('http://192.168.168.90:3000/word.json')
         .then(function (response) {
