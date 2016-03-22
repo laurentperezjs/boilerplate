@@ -9,7 +9,10 @@ const AppFactory = React.createFactory(require('./app/App.jsx'));
 const app = express();
 const port = process.env.PORT || 3000;
 const fetch = require('node-fetch');
+const request = require('superagent');
+const superagentPromisePlugin = require('superagent-promise-plugin');
 app.set('views', __dirname);
+
 app.use('/word.json', (req, res) => {
     var ua = req.headers['user-agent'];
     var now = Date.now();
@@ -17,11 +20,25 @@ app.use('/word.json', (req, res) => {
     let data = {word: 'Hello'};
     res.json(data)
 });
-
 app.use('/index.html', (req, res) => {
     const mc = new MainContainer();
     console.log(mc.getData());
+
+    var query = request.get('http://localhost:3000/word.json');
+    query
+        .use(superagentPromisePlugin)
+        .end() // no callback returns a promise
+        .then(function (result) {
+            console.log("sa res", result.body)
+            const reactHtml = ReactDOMServer.renderToString(AppFactory(result.body));
+            res.render('index.ejs', {reactOutput: reactHtml});
+        })
+        .catch(function (err) {
+            console.error(err)
+        });
+
     // fetch here is node-fetch
+    /*
     fetch('http://localhost:3000/word.json')
         .then(function (response) {
             return response.json()
@@ -33,6 +50,7 @@ app.use('/index.html', (req, res) => {
         console.error('fetch parsing failed', ex)
         return "parsing failed";
     })
+    */
 });
 app.use('/', express.static(`${__dirname}`));
 app.listen(port, ()=> {
