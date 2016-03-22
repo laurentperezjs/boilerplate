@@ -28,7 +28,7 @@ class MainContainer extends React.Component {
         console.log("state", this.state);
         return (
             <main id="result" className='main'>
-                main:{this.props.data.word}
+                {this.props.data.word}
             </main>
         );
     }
@@ -37,7 +37,6 @@ class MainContainer extends React.Component {
 
 const App = (props) => (
     <div className="app">
-        {props.word}
         <MainContainer data={props}/>
     </div>);
 

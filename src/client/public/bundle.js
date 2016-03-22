@@ -61,9 +61,9 @@
 	
 	var ReactDom = __webpack_require__(/*! react-dom */ 166);
 	var React = __webpack_require__(/*! react */ 10);
+	// TODO put the fetch here
 	var data = { word: 'Hello' };
-	
-	ReactDom.render(React.createElement(_App2['default'], { word: 'Hello' }), document.getElementById('content'));
+	ReactDom.render(React.createElement(_App2['default'], { word: data }), document.getElementById('content'));
 
 
 /***/ },
@@ -2737,7 +2737,6 @@
 	        return React.createElement(
 	            "main",
 	            { id: "result", className: "main" },
-	            "main:",
 	            this.props.data.word
 	        );
 	    };
@@ -2749,7 +2748,6 @@
 	    return React.createElement(
 	        "div",
 	        { className: "app" },
-	        props.word,
 	        React.createElement(MainContainer, { data: props })
 	    );
 	};
@@ -3171,7 +3169,7 @@
   \*****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
