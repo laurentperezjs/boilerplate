@@ -21,7 +21,7 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.jsx?$/,
+        test : /\.jsx?/,
         exclude: /node_modules/,
         include: [
           APP_DIR,
