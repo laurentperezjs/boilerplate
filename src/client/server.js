@@ -22,7 +22,7 @@ app.use('/index.html', (req, res) => {
     const mc = new MainContainer();
     console.log(mc.getData());
     // fetch here is node-fetch
-    fetch('http://192.168.168.90:3000/word.json')
+    fetch('http://localhost:3000/word.json')
         .then(function (response) {
             return response.json()
         }).then(function (json) {

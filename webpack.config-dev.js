@@ -21,8 +21,13 @@ var config = {
   module : {
     loaders : [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders : ['imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham','babel']
+      },
+      {
+        test : /\.jsx?$/,
+        exclude: /node_modules/,
         //ie10
         loaders : ['imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham','babel']
       }

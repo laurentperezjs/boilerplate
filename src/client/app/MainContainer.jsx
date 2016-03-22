@@ -1,4 +1,5 @@
 const React = require('react');
+const fetch = require('node-fetch'); // triggers webpack error but fails, why ? why must I require b/c fetch not visible ?
 
 export default class MainContainer extends React.Component {
     constructor(props) {
@@ -7,6 +8,7 @@ export default class MainContainer extends React.Component {
     }
 
     getData() {
+        //can't call setState because it is unmounted
         return "foo";
     }
 
