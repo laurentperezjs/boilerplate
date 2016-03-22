@@ -6,8 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill",
     "build": "NODE_ENV=production webpack -p --config webpack.config.js & node src/client/main.js",
-    "start": "node src/client/main.js & webpack -d --watch --config webpack.config-dev.js",
-    "fg": "DEBUG=express:* node --debug src/client/main.js & webpack -d --watch --config webpack.config-dev.js"
+    "dev": "node src/client/main.js & webpack -d --watch --config webpack.config-dev.js",
+    "fg": "DEBUG=express:* node --debug src/client/main.js & webpack -d --watch --config webpack.config-dev.js & node-inspector"
   },
   "author": "",
   "devDependencies": {
