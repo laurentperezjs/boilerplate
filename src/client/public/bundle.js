@@ -2737,8 +2737,8 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(/*! react */ 5);
-	//const fetch = require('node-fetch'); // triggers webpack error but fails, why ? why must I require b/c fetch not visible ?
-	// fetch error fucks up the bunlde !
+	// triggers webpack error, fails bundle generation, why ? why must I require b/c fetch not visible ?
+	//const fetch = require('node-fetch');
 	var request = __webpack_require__(/*! superagent */ 162);
 	var superagentPromisePlugin = __webpack_require__(/*! superagent-promise-plugin */ 168);
 	
@@ -2765,16 +2765,14 @@
 	         render() will see the updated state and will be executed only once despite the state change.
 	         */
 	        console.log("componentWillMount at:" + Date.now());
-	        /*
-	        fetch('http://localhost:3000/word.json')
+	        /*fetch('http://localhost:3000/word.json')
 	            .then(function (response) {
 	                return response.json()
 	            }).then(function (json) {
 	            this.setState(json);
 	        }.bind(this)).catch(function (ex) {
 	            console.error('fetch parsing failed', ex)
-	        })
-	        */
+	        })*/
 	    };
 	
 	    MainContainer.prototype.componentWillUnmount = function componentWillUnmount() {};
@@ -2785,10 +2783,11 @@
 	
 	    MainContainer.prototype.render = function render() {
 	        console.log("state", this.state);
+	        var word = this.state.word;
 	        return React.createElement(
 	            'main',
 	            { id: 'result', className: 'main' },
-	            'hi'
+	            word
 	        );
 	    };
 	
@@ -24444,7 +24443,7 @@
   \*****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license

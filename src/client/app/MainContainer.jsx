@@ -1,6 +1,6 @@
 const React = require('react');
-//const fetch = require('node-fetch'); // triggers webpack error but fails, why ? why must I require b/c fetch not visible ?
-// fetch error fucks up the bunlde !
+// triggers webpack error, fails bundle generation, why ? why must I require b/c fetch not visible ?
+//const fetch = require('node-fetch');
 const request = require('superagent');
 const superagentPromisePlugin = require('superagent-promise-plugin');
 
@@ -22,16 +22,14 @@ export default class MainContainer extends React.Component {
          render() will see the updated state and will be executed only once despite the state change.
          */
         console.log("componentWillMount at:" + Date.now());
-        /*
-        fetch('http://localhost:3000/word.json')
+        /*fetch('http://localhost:3000/word.json')
             .then(function (response) {
                 return response.json()
             }).then(function (json) {
             this.setState(json);
         }.bind(this)).catch(function (ex) {
             console.error('fetch parsing failed', ex)
-        })
-        */
+        })*/
     }
 
     componentWillUnmount() {
@@ -44,10 +42,11 @@ export default class MainContainer extends React.Component {
 
     render() {
         console.log("state", this.state);
+        var word = this.state.word;
         return (
             <main id="result" className='main'>
                 {/* casse le didmount {this.props.data.word} */}
-                hi
+                {word}
             </main>
         );
     }
