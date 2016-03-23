@@ -2788,7 +2788,7 @@
 	        return React.createElement(
 	            'main',
 	            { id: 'result', className: 'main' },
-	            this.props.data.word
+	            'hi'
 	        );
 	    };
 	

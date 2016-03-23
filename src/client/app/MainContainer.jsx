@@ -46,7 +46,8 @@ export default class MainContainer extends React.Component {
         console.log("state", this.state);
         return (
             <main id="result" className='main'>
-                {this.props.data.word}
+                {/* casse le didmount {this.props.data.word} */}
+                hi
             </main>
         );
     }
