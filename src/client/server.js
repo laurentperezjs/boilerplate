@@ -23,34 +23,8 @@ app.use('/word.json', (req, res) => {
 app.use('/index.html', (req, res) => {
     const mc = new MainContainer();
     console.log(mc.getData());
-
-    var query = request.get('http://localhost:3000/word.json');
-    query
-        .use(superagentPromisePlugin)
-        .end() // no callback returns a promise
-        .then(function (result) {
-            console.log("sa res", result.body)
-            const reactHtml = ReactDOMServer.renderToString(AppFactory(result.body));
-            res.render('index.ejs', {reactOutput: reactHtml});
-        })
-        .catch(function (err) {
-            console.error(err)
-        });
-
-    // fetch here is node-fetch
-    /*
-    fetch('http://localhost:3000/word.json')
-        .then(function (response) {
-            return response.json()
-        }).then(function (json) {
-        console.log('fetched json:', json);
-        const reactHtml = ReactDOMServer.renderToString(AppFactory(json));
-        res.render('index.ejs', {reactOutput: reactHtml});
-    }).catch(function (ex) {
-        console.error('fetch parsing failed', ex)
-        return "parsing failed";
-    })
-    */
+    const reactHtml = ReactDOMServer.renderToString(AppFactory());
+    res.render('index.ejs', {reactOutput: reactHtml});
 });
 app.use('/', express.static(`${__dirname}`));
 app.listen(port, ()=> {
