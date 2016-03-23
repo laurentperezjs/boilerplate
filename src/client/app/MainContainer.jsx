@@ -30,18 +30,31 @@ export default class MainContainer extends React.Component {
         }.bind(this)).catch(function (ex) {
             console.error('fetch parsing failed', ex)
         })*/
+        var query = request.get('http://localhost:3000/word.json');
+
+        query
+            .use(superagentPromisePlugin)
+            .end() // no callback returns a promise
+            .then(function (result) {
+                console.log("mc res", result.body)
+                this.setState(result.body);
+                console.log("mc state", this.state)
+
+            }.bind(this))
+            .catch(function (err) {
+                console.error(err)
+            });
     }
 
     componentWillUnmount() {
     }
 
     componentDidMount() {
-        console.log("componentDidMount at:" + Date.now()); // why not shown ?
-
+        console.log("componentDidMount at:" + Date.now());
     }
 
     render() {
-        console.log("state", this.state);
+        console.log("render state", this.state);
         var word = this.state.word;
         return (
             <main id="result" className='main'>

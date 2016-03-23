@@ -2773,16 +2773,26 @@
 	        }.bind(this)).catch(function (ex) {
 	            console.error('fetch parsing failed', ex)
 	        })*/
+	        var query = request.get('http://localhost:3000/word.json');
+	
+	        query.use(superagentPromisePlugin).end() // no callback returns a promise
+	        .then(function (result) {
+	            console.log("mc res", result.body);
+	            this.setState(result.body);
+	            console.log("mc state", this.state);
+	        }.bind(this))['catch'](function (err) {
+	            console.error(err);
+	        });
 	    };
 	
 	    MainContainer.prototype.componentWillUnmount = function componentWillUnmount() {};
 	
 	    MainContainer.prototype.componentDidMount = function componentDidMount() {
-	        console.log("componentDidMount at:" + Date.now()); // why not shown ?
+	        console.log("componentDidMount at:" + Date.now());
 	    };
 	
 	    MainContainer.prototype.render = function render() {
-	        console.log("state", this.state);
+	        console.log("render state", this.state);
 	        var word = this.state.word;
 	        return React.createElement(
 	            'main',
@@ -24443,7 +24453,7 @@
   \*****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license
