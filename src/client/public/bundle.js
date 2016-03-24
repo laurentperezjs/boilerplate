@@ -2774,15 +2774,16 @@
 	            console.error('fetch parsing failed', ex)
 	        })*/
 	        var query = request.get('http://localhost:3000/word.json');
-	
 	        query.use(superagentPromisePlugin).end() // no callback returns a promise
 	        .then(function (result) {
 	            console.log("mc res", result.body);
-	            this.setState(result.body);
+	            this.setState(result.body); // triggers dual react loading
 	            console.log("mc state", this.state);
+	            debugger;
 	        }.bind(this))['catch'](function (err) {
 	            console.error(err);
 	        });
+	        console.log("componentWillMount state is:", this.state);
 	    };
 	
 	    MainContainer.prototype.componentWillUnmount = function componentWillUnmount() {};
@@ -24453,7 +24454,7 @@
   \*****************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
+	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*!
 	 * @overview es6-promise - a tiny implementation of Promises/A+.
 	 * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
 	 * @license   Licensed under MIT license

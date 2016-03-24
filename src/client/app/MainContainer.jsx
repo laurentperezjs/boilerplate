@@ -31,19 +31,20 @@ export default class MainContainer extends React.Component {
             console.error('fetch parsing failed', ex)
         })*/
         var query = request.get('http://localhost:3000/word.json');
-
         query
             .use(superagentPromisePlugin)
             .end() // no callback returns a promise
             .then(function (result) {
                 console.log("mc res", result.body)
-                this.setState(result.body);
+                this.setState(result.body); // triggers dual react loading
                 console.log("mc state", this.state)
+                debugger;
 
             }.bind(this))
             .catch(function (err) {
                 console.error(err)
             });
+        console.log("componentWillMount state is:", this.state);
     }
 
     componentWillUnmount() {
